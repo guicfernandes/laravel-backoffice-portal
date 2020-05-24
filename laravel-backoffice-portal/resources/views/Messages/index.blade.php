@@ -1,26 +1,27 @@
-@extends('base')
+<!-- @extends('base') -->
+@extends('layouts.app')
 
 @section('main')
 <div class="row">
 <div class="col-sm-12">
-    <div>
-        <a style="margin: 19px;" href="{{ route('messages.create')}}" class="btn btn-primary">Create Annoncement</a>
-    </div>  
-    <h1 class="display-3">Create Announcements</h1>   
+    <h1 class="display-6 text-center">Annoncements</h1>   
     
     @if(session()->get('success'))
         <div class="alert alert-success">
-            {{ session()->get('success') }}  
+            {{ session()->get('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     @endif 
     
-    <table class="table table-striped">
+    <table class="table table-striped"  style="text-align:center">
     <thead>
         <tr>
-          <td>Start Date</td>
-          <td>Expiration Date</td>
-          <td>Subject</td>
-          <td colspan = 3>Actions</td>
+          <td style="width:30%">Start Date</td>
+          <td style="width:30%">Expiration Date</td>
+          <td style="width:30%">Subject</td>
+          <td colspan = 3 style="width:30%">Actions</td>
         </tr>
     </thead>
     <tbody>
@@ -40,7 +41,7 @@
                     <form action="{{ route('messages.destroy', $message->id)}}" method="post">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Delete</button>
+                    <button class="btn btn-danger" type="submit">Cancel</button>
                     </form>
                 </td>
             </tr>

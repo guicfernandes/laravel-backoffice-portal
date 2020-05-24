@@ -1,9 +1,10 @@
-@extends('base')
+<!-- @extends('base') -->
+@extends('layouts.app')
 
 @section('main')
 <div class="row">
  <div class="col-sm-8 offset-sm-2">
-    <h1 class="display-3">Create Announcements</h1>
+    <h1 class="display-6 text-center">Create Announcements</h1>
   <div>
     @if ($errors->any())
       <div class="alert alert-danger">
@@ -23,19 +24,24 @@
 
           <div class="form-group">
               <label for="content">Content:</label>
-              <input type="text" class="form-control" name="content"/>
+              <textarea class="form-control" name="content" rows="4"></textarea>
           </div>
 
           <div class="form-group">
               <label for="start_date">Start Date:</label>
-              <input type="text" class="form-control" name="start_date"/>
+              <!-- <input type="text" class="form-control" name="start_date"/> -->
+              <div id="start-date-picker" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+                <input placeholder="Select start date" type="text" class="form-control" name="start_date">
+                <i class="fas fa-calendar input-prefix"></i>
+              </div>
           </div>
           <div class="form-group">
               <label for="expiration_date">Expiration Date:</label>
               <input type="text" class="form-control" name="expiration_date"/>
-          </div>               
-          <button type="submit" class="btn btn-primary-outline">Create</button>
-          <button type="cancel" class="btn btn-primary-outline">Cancel</button>
+          </div>
+          <hr/>
+          <button type="submit" class="btn btn-primary">Create</button>
+          <button type="cancel" class="btn btn-primary">Back</button>
       </form>
   </div>
 </div>

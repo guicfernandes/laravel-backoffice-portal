@@ -1,8 +1,10 @@
-@extends('base') 
+<!-- @extends('base')  -->
+@extends('layouts.app')
+
 @section('main')
 <div class="row">
     <div class="col-sm-8 offset-sm-2">
-        <h1 class="display-3">Update a message</h1>
+        <h1 class="display-6 text-center">Update a message</h1>
 
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -20,12 +22,12 @@
             <div class="form-group">
 
                 <label for="subject">Subject:</label>
-                <input type="text" class="form-control" name="subject" value={{ $message->subject }} />
+                <textarea class="form-control" name="subject" rows="1">{{ $message->subject }}</textarea>
             </div>
 
             <div class="form-group">
                 <label for="content">Content:</label>
-                <input type="text" class="form-control" name="content" value={{ $message->content }} />
+                <textarea class="form-control" name="content" rows="4">{{ $message->content }}</textarea>
             </div>
 
             <div class="form-group">
@@ -37,7 +39,7 @@
                 <input type="text" class="form-control" name="expiration_date" value={{ $message->expiration_date }} />
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
-            <button type="cancel" class="btn btn-primary">Cancel</button>
+            <button type="cancel" class="btn btn-primary">Back</button>
         </form>
     </div>
 </div>

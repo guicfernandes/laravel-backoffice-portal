@@ -19,3 +19,6 @@ Route::get('/', function () {
 
 Route::resource('messages', 'MessageController');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
