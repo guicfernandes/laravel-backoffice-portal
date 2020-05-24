@@ -5,8 +5,9 @@ Here are some hints for you to run the application, including how to set a envir
 
 #Windows users:
 
-Download wamp: http://www.wampserver.com/en/
-Update windows environment variable path to point to your php install folder, which is inside wamp installation directory (here is how you can do this http://stackoverflow.com/questions/17727436/how-to-properly-set-php-environment-variable-to-run-commands-in-git-bash)
+Download wamp: http://www.wampserver.com/en/.
+
+Update windows environment variable path to point to your php install folder, which is inside wamp installation directory (here is how you can do this http://stackoverflow.com/questions/17727436/how-to-properly-set-php-environment-variable-to-run-commands-in-git-bash).
 
 #Mac Os, Ubuntu and windows users continue here:
 
@@ -20,8 +21,11 @@ Update windows environment variable path to point to your php install folder, wh
 - Run php artisan migrate
 - Run php artisan db:seed to run seeders, if any.
 - Run php artisan serve
+
 #####You can now access your project at localhost:8000 :)
 
 #If for some reason your project stop working do these:
-composer install
+
+composer install.
+
 php artisan migrate
