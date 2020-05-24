@@ -21,7 +21,7 @@ Update windows environment variable path to point to your php install folder, wh
 - Run php artisan db:seed to run seeders.
 - Run php artisan serve
 
-#You can now access your project at localhost:8000 :)
+#You can now access your project at localhost:8000/login
 
 #If for some reason your project stop working do these:
 
