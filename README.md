@@ -11,7 +11,7 @@ Update windows environment variable path to point to your php install folder, wh
 
 #Mac Os, Ubuntu and windows users continue here:
 
-- Create a database locally named homestead utf8_general_ci
+- Create a database locally named 'db'
 - Download composer https://getcomposer.org/download/
 - Pull Laravel/php project from git.
 - Open the console and cd your project root directory
