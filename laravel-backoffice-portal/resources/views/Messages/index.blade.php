@@ -25,6 +25,7 @@
         </tr>
     </thead>
     <tbody>
+        @if($messages->count())
         @foreach($messages as $message)
             @if($message->active)
             <tr>
@@ -54,8 +55,17 @@
             </tr>
             @endif
         @endforeach
+        @else
+            <tr>
+                <td colspan="6">There are no announcement registered yet.</td>
+            </tr>
+        @endif
     </tbody>
     </table>
+    <div class="row justify-content-center align-items-center">
+        {!! $messages->links() !!}
+    </div>
 <div>
 </div>
+
 @endsection
