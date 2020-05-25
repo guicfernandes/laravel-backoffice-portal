@@ -28,3 +28,7 @@ Update windows environment variable path to point to your php install folder, wh
 composer install.
 
 php artisan migrate
+
+#This application also has unit tests written, which you can run by entering the following code in your cmd project root directory
+
+vendor/bin/phpunit
