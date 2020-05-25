@@ -40,7 +40,7 @@ cd {project_root_directory}
 php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ```
 
-- Get front-end dependencies
+- Install front-end dependencies
 
 ```bash
 npm install
