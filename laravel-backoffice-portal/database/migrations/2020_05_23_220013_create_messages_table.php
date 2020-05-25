@@ -23,7 +23,7 @@ class CreateMessagesTable extends Migration
             $table->datetime('change_event_date');
             $table->boolean('active');
             $table->BigInteger('employee_id')->unsigned();
-            $table->foreign('employee_id')->references('id')->on('employees');
+            $table->foreign('employee_id')->references('id')->on('users');
         });
     }
 

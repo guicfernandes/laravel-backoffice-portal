@@ -14,8 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Route::resource('messages', 'MessageController');
+Route::post('/messages/create','MessageController@store');
+Route::put('/messages/{message}','MessageController@update');
+// Route::get('/messages/{message}','MessageController@show');
+// Route::delete('/messages/{message}','MessageController@destroy');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

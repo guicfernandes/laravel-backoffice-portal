@@ -1,31 +1,104 @@
-# laravel-backoffice-portal
+# Backoffice Portal
+
 That's a personnal project from a BackOffice Portal for studying and working with Laravel and VueJS.
 
-Here are some hints for you to run the application, including how to set a environment to run PHP applications, using Laravel, VueJS and MySql.
+## Getting Started
 
-#Windows users:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+### Prerequisites
+
+What things you need to install the software and how to install them
+
+#### Windows users:
+```
 Download wamp: http://www.wampserver.com/en/.
-
 Update windows environment variable path to point to your php install folder, which is inside wamp installation directory (here is how you can do this http://stackoverflow.com/questions/17727436/how-to-properly-set-php-environment-variable-to-run-commands-in-git-bash).
+```
 
-#Mac Os, Ubuntu and windows users continue here:
+### Installing
 
-- Create a database locally named homestead utf8_general_ci
+A step by step series of examples that tell you how to get a development env running
+
 - Download composer https://getcomposer.org/download/
-- Pull Laravel/php project from git provider.
-- Rename .env.example file to .envinside your project root and fill the database information. (windows wont let you do it, so you have to open your console cd your project root directory and run mv .env.example .env )
-- Open the console and cd your project root directory
-- Run composer install or php composer.phar install
-- Run php artisan key:generate
-- Run php artisan migrate
-- Run php artisan db:seed to run seeders, if any.
-- Run php artisan serve
 
-#####You can now access your project at localhost:8000 :)
+- Clone/Pull the project from git.
 
-#If for some reason your project stop working do these:
+```
+git clone {project_url}
+```
 
-composer install.
+- Open the console and go to your project root directory
 
+```bash
+cd {project_root_directory}
+```
+
+- Install Composer
+
+```bash
+php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+```
+
+- Get front-end dependencies
+
+```bash
+npm install
+npm run dev
+```
+
+- Create a database locally named 'db'
+
+```bash
+mysql -u root -p
+mysql> create database db;
+```
+
+- Create a tables needed by the application in the local database
+
+```bash
+php artisan key:generate
 php artisan migrate
+php artisan db:seed
+```
+
+Now you are able to run the application 
+
+## Running the application
+To run the application you should get to the command
+
+```bash
+php artisan serve
+```
+
+And now get to url's browser "http://localhost:8000"
+
+Once there, you can register yourself or, if so, log yourself in.
+
+## Running the unit tests
+
+To run the full suite of unit tests you should run the command
+```bash
+vendor/bin/phpunit
+```
+
+### Break down into end to end tests
+
+And you can also run the only one test you want to by running the command
+
+```bash
+vendor/bin/phpunit --filter {unit_test_name}
+```
+
+## Built With
+
+* [Laravel](https://laravel.com/docs/7.x) - The web framework used
+* [VueJS](https://vuejs.org/v2/guide/) - Front-end
+* [MySQL](https://dev.mysql.com/doc/) - Database Management
+* [Laravel Authentication](https://laravel.com/docs/7.x/authentication) - Authentication Mecanism
+* [Laravel Model Factory](https://laravel.com/docs/7.x/database-testing) - Model Factory for Database Testing
+* [MVC](https://pt.wikipedia.org/wiki/MVC) - MVC architectural pattern
+
+## Authors
+
+* **Guilherme Cardoso Fernandes** - *Initial work* - (https://github.com/guicfernandes)

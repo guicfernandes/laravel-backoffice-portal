@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use \DateTime;
 use Carbon\Traits\Date;
@@ -11,6 +12,16 @@ use App\Employee;
 
 class MessageController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,8 +55,8 @@ class MessageController extends Controller
         $request->validate([
             'subject'=>'required',
             'content'=>'required',
-            'start_date'=>'required',
-            'expiration_date'=>'required'
+            'start_date'=>'required|date|date_format:d-m-Y',
+            'expiration_date'=>'required|date|date_format:d-m-Y|after:yesterday'
         ]);
 
         $message = new Message([
@@ -55,8 +66,7 @@ class MessageController extends Controller
             'expiration_date' => date("Y-m-d", strtotime(request('expiration_date'))),
             'change_event_date' => date('Y-m-d H:i:s'),
             'active' => true,
-            'employee_id' => 1
-            // 'employee_id' => $employee->get('id')
+            'employee_id' => Auth::id()
         ]);
 
         $message->save();
@@ -71,7 +81,9 @@ class MessageController extends Controller
      */
     public function show($id)
     {
-        //
+        $message = Message::find($id);
+
+        return view('messages.view', compact('message'));
     }
 
     /**
@@ -99,24 +111,27 @@ class MessageController extends Controller
         $request->validate([
             'subject'=>'required',
             'content'=>'required',
-            'start_date'=>'required',
-            'expiration_date'=>'required'
+            'start_date'=>'required|date|date_format:d-m-Y',
+            'expiration_date'=>'required|date|date_format:d-m-Y|after:yesterday'
         ]);
 
         $message = Message::find($id);
         $message->subject =  $request->get('subject');
         $message->content = $request->get('content');
-        $message->start_date = $request->get('start_date');
-        $message->expiration_date = $request->get('expiration_date');
+        $message->start_date = date("Y-m-d", strtotime(request('start_date')));
+        $message->expiration_date = date("Y-m-d", strtotime(request('expiration_date')));
         $message->change_event_date = date('Y-m-d H:i:s');
         $message->active = true;
+
+        $this->authorize('update', $message);
+        
         $message->save();
 
         return redirect('/messages')->with('success', 'Message updated!');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Cancel, ie making it inactive, the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -126,9 +141,11 @@ class MessageController extends Controller
         $message = Message::find($id);
         // $message->delete();
 
+        $this->authorize('update', $message);
+
         $message->active = false;
         $message->save();
 
-        return redirect('/messages')->with('success', 'Message deleted!');
+        return redirect('/messages')->with('success', 'Message canceled!');
     }
 }
