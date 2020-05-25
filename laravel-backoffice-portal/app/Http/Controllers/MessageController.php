@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use \DateTime;
 use Carbon\Traits\Date;
@@ -65,8 +66,7 @@ class MessageController extends Controller
             'expiration_date' => date("Y-m-d", strtotime(request('expiration_date'))),
             'change_event_date' => date('Y-m-d H:i:s'),
             'active' => true,
-            'employee_id' => 1
-            // 'employee_id' => $employee->get('id')
+            'employee_id' => Auth::id()
         ]);
 
         $message->save();
@@ -122,13 +122,16 @@ class MessageController extends Controller
         $message->expiration_date = $request->get('expiration_date');
         $message->change_event_date = date('Y-m-d H:i:s');
         $message->active = true;
+
+        $this->authorize('update', $message);
+        
         $message->save();
 
         return redirect('/messages')->with('success', 'Message updated!');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Cancel, ie making it inactive, the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -138,9 +141,11 @@ class MessageController extends Controller
         $message = Message::find($id);
         // $message->delete();
 
+        $this->authorize('update', $message);
+
         $message->active = false;
         $message->save();
 
-        return redirect('/messages')->with('success', 'Message deleted!');
+        return redirect('/messages')->with('success', 'Message canceled!');
     }
 }

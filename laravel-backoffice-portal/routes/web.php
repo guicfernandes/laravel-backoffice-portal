@@ -18,6 +18,10 @@ Route::get('/', function () {
 });
 
 Route::resource('messages', 'MessageController');
+Route::post('/messages/create','MessageController@store');
+Route::put('/messages/{message}','MessageController@update');
+// Route::get('/messages/{message}','MessageController@show');
+// Route::delete('/messages/{message}','MessageController@destroy');
 
 Auth::routes();
 

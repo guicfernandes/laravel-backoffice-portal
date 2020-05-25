@@ -40,8 +40,11 @@
               <input type="text" class="form-control" name="expiration_date"/>
           </div>
           <hr/>
-          <button type="submit" class="btn btn-primary">Create</button>
-          <button type="cancel" class="btn btn-primary">Back</button>
+          <div class="float-right">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a class="btn btn-default btn-close" href="{{ route('messages.index') }}">Cancel</a>
+            <!-- <button type="cancel" class="btn btn-primary">Cancel</button> -->
+          </div>
       </form>
   </div>
 </div>

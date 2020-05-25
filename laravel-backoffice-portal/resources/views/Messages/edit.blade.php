@@ -38,8 +38,13 @@
                 <label for="expiration_date">Expiration Date:</label>
                 <input type="text" class="form-control" name="expiration_date" value={{ $message->expiration_date }} />
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
-            <button type="cancel" class="btn btn-primary">Back</button>
+            <div class="float-right">  
+                @can('update', $message)
+                    <button type="submit" class="btn btn-warning">Update</button>
+                @endcan
+                <a class="btn btn-default btn-close" href="{{ route('messages.index') }}">Cancel</a>
+                <!-- <button type="cancel" class="btn btn-primary">Cancel</button> -->
+            </div>
         </form>
     </div>
 </div>

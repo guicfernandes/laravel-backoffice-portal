@@ -31,19 +31,26 @@
                 <td>{{$message->start_date}}</td>
                 <td>{{$message->expiration_date}}</td>
                 <td>{{$message->subject}}</td>
-                <td>
-                    <a href="{{ route('messages.show',$message->id)}}" class="btn btn-primary">View</a>
-                </td>
-                <td>
-                    <a href="{{ route('messages.edit',$message->id)}}" class="btn btn-primary">Edit</a>
-                </td>
-                <td>
-                    <form action="{{ route('messages.destroy', $message->id)}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Cancel</button>
-                    </form>
-                </td>
+                
+                @can('update', $message)
+                    <td>
+                        <a href="{{ route('messages.show',$message->id)}}" class="btn btn-primary">View</a>
+                    </td>
+                    <td>
+                        <a href="{{ route('messages.edit',$message->id)}}" class="btn btn-warning">Edit</a>
+                    </td>
+                    <td>
+                        <form action="{{ route('messages.destroy', $message->id)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit">Cancel</button>
+                        </form>
+                    </td>
+                @else
+                    <td colspan=3>
+                        <a href="{{ route('messages.show',$message->id)}}" class="btn btn-primary">View</a>
+                    </td>
+                @endcan
             </tr>
             @endif
         @endforeach
