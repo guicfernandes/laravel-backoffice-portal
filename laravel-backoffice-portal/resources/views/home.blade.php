@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Welcome</div>
+                <div class="card-header">Welcome to Backoffice Portal</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,8 +14,8 @@
                         </div>
                     @endif
                     
-                    <p>Hello, {{ Auth::user()->name }}! Welcome to Backoffice Portal.</p>
-                    <p>Read instructions above for a better navigation to announcements.</p>
+                    <p>Hello, {{ Auth::user()->name }}! Read instructions above for a better 
+                    navigation to announcements.</p>
                     <h1 class="display-6">Instructions</h1>
                     <hr/>
                     <ul class="list-group">
@@ -32,12 +32,20 @@
                             your username.
                         </li>
                         <li class="list-group-item">
-                            Once in <strong>Announcements</strong> page, you may view, update
-                            or delete the announcements created by your user.
+                            <strong>Announcements</strong> page lists all the announcements created.
                         </li>
                         <li class="list-group-item">
-                            You <strong>cannot</strong> update or delete an announcement created
-                            by any other user in the application.    
+                            Once in <strong>Announcements</strong> page, you may take actions for
+                            viewing, updating or deleting the announcements created by your user.
+                        </li>
+                        <li class="list-group-item">
+                            You <strong>cannot</strong> update or cancel an announcement created by any 
+                            other user in the application. That's why you don't see <strong>Edit</strong> 
+                            and <strong>Cancel</strong> buttons in some announcements.    
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Cancel</strong> button don't delete an announcement, this action just
+                            make an announcement not active anymore.
                         </li>
                         <li class="list-group-item">
                             Once in <strong>Create Announcement</strong> page, all the inputs are
