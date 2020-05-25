@@ -62,12 +62,18 @@ php artisan migrate
 php artisan db:seed
 ```
 
-Now you are able to run the application by just running the command
+Now you are able to run the application 
+
+## Running the application
+To run the application you should get to the command
+
 ```bash
 php artisan serve
 ```
 
-And get to url's browser "http://localhost:8000"
+And now get to url's browser "http://localhost:8000"
+
+Once there, you can register yourself or, if so, log yourself in.
 
 ## Running the unit tests
 
@@ -83,10 +89,6 @@ And you can also run the only one test you want to by running the command
 ```bash
 vendor/bin/phpunit --filter {unit_test_name}
 ```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
