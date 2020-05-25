@@ -55,7 +55,7 @@ class MessageController extends Controller
         $request->validate([
             'subject'=>'required',
             'content'=>'required',
-            'start_date'=>'required|date|date_format:d-m-Y|after:yesterday',
+            'start_date'=>'required|date|date_format:d-m-Y',
             'expiration_date'=>'required|date|date_format:d-m-Y|after:yesterday'
         ]);
 
@@ -111,15 +111,15 @@ class MessageController extends Controller
         $request->validate([
             'subject'=>'required',
             'content'=>'required',
-            'start_date'=>'required',
-            'expiration_date'=>'required'
+            'start_date'=>'required|date|date_format:d-m-Y',
+            'expiration_date'=>'required|date|date_format:d-m-Y|after:yesterday'
         ]);
 
         $message = Message::find($id);
         $message->subject =  $request->get('subject');
         $message->content = $request->get('content');
-        $message->start_date = $request->get('start_date');
-        $message->expiration_date = $request->get('expiration_date');
+        $message->start_date = date("Y-m-d", strtotime(request('start_date')));
+        $message->expiration_date = date("Y-m-d", strtotime(request('expiration_date')));
         $message->change_event_date = date('Y-m-d H:i:s');
         $message->active = true;
 

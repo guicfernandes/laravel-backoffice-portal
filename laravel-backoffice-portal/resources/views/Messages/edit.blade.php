@@ -33,11 +33,11 @@
             <div class="row">
                 <div class="col">
                 <label for="start_date">Start Date:</label>
-                <input type="text" class="date form-control" name="start_date" value={{ date('d/m/Y', strtotime($message->start_date)) }} />
+                <input type="text" class="date form-control" name="start_date" value={{ date('d-m-Y', strtotime($message->start_date)) }} />
                 </div>
                 <div class="col">
                 <label for="expiration_date">Expiration Date:</label>
-                <input type="text" class="date form-control" name="expiration_date" value={{ date('d/m/Y', strtotime($message->expiration_date)) }} />
+                <input type="text" class="date form-control" name="expiration_date" value={{ date('d-m-Y', strtotime($message->expiration_date)) }} />
                 </div>
             </div>
             <hr/>

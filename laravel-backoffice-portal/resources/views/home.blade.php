@@ -15,7 +15,7 @@
                     @endif
                     
                     <p>Hello, {{ Auth::user()->name }}! Welcome to Backoffice Portal.</p>
-                    <p>Read instructions above about how to navigate and create announcements.</p>
+                    <p>Read instructions above for a better navigation to announcements.</p>
                     <h1 class="display-6">Instructions</h1>
                     <hr/>
                     <ul class="list-group">
@@ -44,9 +44,6 @@
                             required to fill in the form.
                         </li>
                     </ul>
-                    <!-- navigation -->
-                    <!-- Options on Announcement Page -->
-                    <!-- How to create an Announcement -->
                 </div>
             </div>
         </div>
