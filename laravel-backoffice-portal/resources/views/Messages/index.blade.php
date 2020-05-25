@@ -28,8 +28,8 @@
         @foreach($messages as $message)
             @if($message->active)
             <tr>
-                <td>{{$message->start_date}}</td>
-                <td>{{$message->expiration_date}}</td>
+                <td>{{ date('d/m/Y', strtotime($message->start_date)) }}</td>
+                <td>{{ date('d/m/Y', strtotime($message->expiration_date)) }}</td>
                 <td>{{$message->subject}}</td>
                 
                 @can('update', $message)

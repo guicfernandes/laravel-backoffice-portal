@@ -55,8 +55,8 @@ class MessageController extends Controller
         $request->validate([
             'subject'=>'required',
             'content'=>'required',
-            'start_date'=>'required',
-            'expiration_date'=>'required'
+            'start_date'=>'required|date|date_format:d-m-Y|after:yesterday',
+            'expiration_date'=>'required|date|date_format:d-m-Y|after:yesterday'
         ]);
 
         $message = new Message([

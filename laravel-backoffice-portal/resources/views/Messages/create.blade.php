@@ -27,17 +27,19 @@
               <textarea class="form-control" name="content" rows="4"></textarea>
           </div>
 
-          <div class="form-group">
+          <div class="row">
+            <div class="col">
               <label for="start_date">Start Date:</label>
               <!-- <input type="text" class="form-control" name="start_date"/> -->
-              <div id="start-date-picker" class="md-form md-outline input-with-post-icon datepicker" inline="true">
-                <input placeholder="Select start date" type="text" class="form-control" name="start_date">
-                <i class="fas fa-calendar input-prefix"></i>
-              </div>
-          </div>
-          <div class="form-group">
+              <input placeholder="Select start date" class="date form-control"  
+                    type="text" name="start_date">
+            </div>
+            <div class="col">
               <label for="expiration_date">Expiration Date:</label>
-              <input type="text" class="form-control" name="expiration_date"/>
+              <input placeholder="Select expiration date" class="date form-control"  
+                    type="text" name="expiration_date">
+              <!-- <input type="text" class="form-control" name="expiration_date"/> -->
+            </div>
           </div>
           <hr/>
           <div class="float-right">
@@ -49,4 +51,11 @@
   </div>
 </div>
 </div>
+
+<script type="text/javascript">
+        $('.date').datepicker({  
+        format: 'dd-mm-yyyy'
+        // format: 'd MM, yyyy'
+        });  
+</script>
 @endsection

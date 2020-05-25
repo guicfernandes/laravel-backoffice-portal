@@ -30,14 +30,17 @@
                 <textarea class="form-control" name="content" rows="4">{{ $message->content }}</textarea>
             </div>
 
-            <div class="form-group">
+            <div class="row">
+                <div class="col">
                 <label for="start_date">Start Date:</label>
-                <input type="text" class="form-control" name="start_date" value={{ $message->start_date }} />
-            </div>
-            <div class="form-group">
+                <input type="text" class="date form-control" name="start_date" value={{ date('d/m/Y', strtotime($message->start_date)) }} />
+                </div>
+                <div class="col">
                 <label for="expiration_date">Expiration Date:</label>
-                <input type="text" class="form-control" name="expiration_date" value={{ $message->expiration_date }} />
+                <input type="text" class="date form-control" name="expiration_date" value={{ date('d/m/Y', strtotime($message->expiration_date)) }} />
+                </div>
             </div>
+            <hr/>
             <div class="float-right">  
                 @can('update', $message)
                     <button type="submit" class="btn btn-warning">Update</button>
@@ -48,4 +51,11 @@
         </form>
     </div>
 </div>
+
+<script type="text/javascript">
+        $('.date').datepicker({  
+        format: 'dd-mm-yyyy'
+        // format: 'd MM, yyyy'
+        });  
+</script>
 @endsection
